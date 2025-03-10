@@ -1,0 +1,19 @@
+{
+  "name": "jupyterlab-meta",
+  "version": "1.0.0",
+  "private": true,
+  "description": "JupyterLab metapackage",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QuantStack/jupyterlab-meta.git"
+  },
+  "author": "QuantStack",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/QuantStack/jupyterlab-meta/issues"
+  },
+  "homepage": "https://github.com/QuantStack/jupyterlab-meta#readme"
+}
