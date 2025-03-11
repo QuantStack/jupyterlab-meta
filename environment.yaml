@@ -2,18 +2,20 @@ name: base
 channels:
   - conda-forge
 dependencies:
+  # Base depenndencies
   - python=3.12
-  - git
   - jupyterlab=4.3.5
+  - git
+  - ruff=0.9.10
+  - nb_conda_kernels=2.5.1
+  # Extensions
   - papermill=2.6.0
   - voila=0.5.8
-  - nb_conda_kernels=2.5.1
   - ipywidgets=8.1.5
   - dash==2.18.2
   - jupyterlab-lsp=5.1.0
   - jupyterlab_code_formatter=3.0.2
   - python-lsp-server=1.12.2
-  - ruff=0.9.10
   - ipydatagrid=1.4.0
   - ipympl=0.9.6
   - jupytext=1.16.7
