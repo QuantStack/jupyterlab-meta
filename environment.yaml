@@ -3,7 +3,8 @@ channels:
   - conda-forge
 dependencies:
   - python=3.12
-  - jupyterlab=4.3.0
+  - git
+  - jupyterlab=4.3.5
   - papermill=2.6.0
   - voila=0.5.8
   - nb_conda_kernels=2.5.1
@@ -14,3 +15,6 @@ dependencies:
   - python-lsp-server=1.12.2
   - ruff=0.9.10
   - ipydatagrid=1.4.0
+  - ipympl=0.9.6
+  - jupytext=1.16.7
+  - jupyterlab-git=0.51.0

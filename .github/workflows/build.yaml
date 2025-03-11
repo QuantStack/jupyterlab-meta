@@ -8,6 +8,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Build docker image
-        run: docker build -t jupyterlab-meta:latest .
+        run: |
+          npm install
+          npm run build
+      - name: Run test
+        run: |
+          npm run test
+      - name: Upload Playwright Test report
+        id: upload-galata-artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-tests
+          path: |
+            ./test-results
+            ./playwright-report

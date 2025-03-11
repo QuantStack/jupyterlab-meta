@@ -4,7 +4,9 @@
   "private": true,
   "description": "JupyterLab metapackage",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "docker build --tag lab-meta:latest .",
+    "start": "docker run --rm -t -p 8888:8888 -v ./notebooks:/home/mambauser/app/notebooks lab-meta:latest",
+    "test": "npx playwright test"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/QuantStack/jupyterlab-meta/issues"
   },
-  "homepage": "https://github.com/QuantStack/jupyterlab-meta#readme"
+  "homepage": "https://github.com/QuantStack/jupyterlab-meta#readme",
+  "dependencies": {
+    "@jupyterlab/galata": "^5.3.5",
+    "@playwright/test": "^1.51.0"
+  }
 }
