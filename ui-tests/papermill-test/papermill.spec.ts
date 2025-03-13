@@ -20,5 +20,8 @@ test.describe("Papermill Execution Test", () => {
       .textContent();
 
     expect(outputPath).toBeTruthy();
+    expect(await page.screenshot()).toMatchSnapshot("papermill-output.png", {
+        maxDiffPixelRatio: 0.05,
+      });
   });
 });
