@@ -18,11 +18,11 @@ module.exports = {
   use: {
     ...baseConfig.use,
     trace: 'off',
-    video: 'on'
+    video: 'retain-on-failure'
   },
   expect: {
     toMatchSnapshot: {
       maxDiffPixelRatio: 0.02,
     },
-  }
+  },
 };
