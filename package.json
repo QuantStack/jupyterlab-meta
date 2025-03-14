@@ -6,6 +6,7 @@
   "scripts": {
     "build": "docker build --tag lab-meta:latest .",
     "start": "docker run --rm -t -p 8888:8888 -v ./notebooks:/home/mambauser/app/notebooks lab-meta:latest",
+    "start:test": "docker run --rm -t -p 8888:8888 -p 8052:8052 -v ./notebooks:/home/mambauser/app/notebooks lab-meta:latest",
     "test": "npx playwright test"
   },
   "repository": {

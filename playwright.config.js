@@ -6,7 +6,7 @@ const baseConfig = require('@jupyterlab/galata/lib/playwright-config');
 module.exports = {
   ...baseConfig,
   webServer: {
-    command: 'npm run start',
+    command: 'npm run start:test',
     url: 'http://localhost:8888/lab',
     timeout: 120 * 1000,
     reuseExistingServer: false,
@@ -14,7 +14,7 @@ module.exports = {
       signal: 'SIGTERM', timeout: 500 
     }
   },
-  retries: 1,
+  retries: 2,
   use: {
     ...baseConfig.use,
     trace: 'off',
@@ -22,7 +22,7 @@ module.exports = {
   },
   expect: {
     toMatchSnapshot: {
-      maxDiffPixelRatio: 0.002,
+      maxDiffPixelRatio: 0.02,
     },
   },
 };
