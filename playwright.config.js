@@ -14,7 +14,7 @@ module.exports = {
       signal: 'SIGTERM', timeout: 500 
     }
   },
-  retries: 2,
+  retries: 1,
   use: {
     ...baseConfig.use,
     trace: 'off',

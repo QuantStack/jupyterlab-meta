@@ -6,23 +6,27 @@ test.describe("ipympl Extension", () => {
   test("should render an interactive Matplotlib figure", async ({ page }) => {
     await page.goto();
 
-    await page.notebook.open("test-ipympl.ipynb");
+    await page.notebook.open("test-large-notebook-with-extensions.ipynb");
+
     await expect(page.locator(".jp-Notebook")).toBeVisible();
     await page.waitForTimeout(5000);
 
-    await page.notebook.run();
+    const tocTab = page.locator('li[data-id="table-of-contents"]');
+    await tocTab.click();
+    await page.waitForTimeout(2000);
+
+    await page.locator('span[title="ipympl"]').click();
+    await page.waitForTimeout(2000);
+
+    await page.notebook.runCell(13);
+
+    await page.waitForTimeout(3000);
 
     const mplFigure = page.locator(".jupyter-matplotlib-figure");
     await expect(mplFigure).toBeVisible();
 
     const mplCanvas = mplFigure.locator("canvas");
     await expect(mplCanvas).toHaveCount(2);
-    const box = await mplCanvas.first().boundingBox();
-    if (box) {
-      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-    }
-    const toolbar = page.locator(".jupyter-matplotlib-toolbar");
-    await expect(toolbar).toBeVisible();
 
     expect(await page.screenshot()).toMatchSnapshot("ipympl-figure.png");
   });

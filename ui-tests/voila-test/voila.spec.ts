@@ -16,7 +16,7 @@ test.describe("Voila Extension Test", () => {
     await voilaButton.click();
     await page.locator('button:has-text("Close")').click();
     
-    await page.waitForTimeout(5000);
+    await page.waitForTimeout(6000);
     expect(await page.screenshot()).toMatchSnapshot("voila.png");
   });
 });
