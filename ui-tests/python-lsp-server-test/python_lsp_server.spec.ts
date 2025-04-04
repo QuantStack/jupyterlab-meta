@@ -6,7 +6,7 @@ test.describe("Jupyterlab-lsp Extension Test", () => {
   test("should open lsp popup", async ({ page }) => {
     await page.goto();
 
-    await page.notebook.open("test-lsp.ipynb");
+    await page.notebook.open("test-large-notebook-with-extensions.ipynb");
 
     const notebookEditor = page.locator(".jp-Notebook");
     await expect(notebookEditor).toBeVisible();

@@ -8,12 +8,17 @@ test.describe("Papermill Execution Test", () => {
   }) => {
     await page.goto();
 
-    await page.notebook.open("test.ipynb");
+    await page.notebook.open("test-large-notebook-with-extensions.ipynb");
     await expect(page.locator(".jp-Notebook")).toBeVisible();
+    const tocTab = page.locator('li[data-id="table-of-contents"]');
+    await tocTab.click();
+    await page.waitForTimeout(2000);
 
-    await page.notebook.run();
-    await page.waitForTimeout(10000); 
+    await page.locator('span[title="Papermill"]').click();
+    await page.waitForTimeout(2000);
 
+    await page.notebook.runCell(3, false);
+    await page.waitForTimeout(200);
     const outputPath = await page
       .locator(".jp-Cell .jp-OutputArea-output")
       .locator("text=/Output saved to.*/")
@@ -21,7 +26,7 @@ test.describe("Papermill Execution Test", () => {
 
     expect(outputPath).toBeTruthy();
     expect(await page.screenshot()).toMatchSnapshot("papermill-output.png", {
-        maxDiffPixelRatio: 0.05,
-      });
+      maxDiffPixelRatio: 0.05,
+    });
   });
 });

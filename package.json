@@ -22,5 +22,8 @@
   "dependencies": {
     "@jupyterlab/galata": "^5.3.5",
     "@playwright/test": "^1.51.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.15"
   }
 }

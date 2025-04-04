@@ -9,6 +9,7 @@ dependencies:
   - ruff=0.9.10
   - nb_conda_kernels=2.5.1
   - black=25.1.0
+  - nbformat
   # Extensions
   - papermill=2.6.0
   - voila=0.5.8

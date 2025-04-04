@@ -6,17 +6,25 @@ test.describe("ipywidgets Extension", () => {
   test("should render widgets and interact", async ({ page }) => {
     await page.goto();
 
-    await page.notebook.open("test-ipywidgets.ipynb");
+    await page.notebook.open("test-large-notebook-with-extensions.ipynb");
 
     await expect(page.locator(".jp-Notebook")).toBeVisible();
     await page.waitForTimeout(5000);
 
-    await page.notebook.run();
+    const tocTab = page.locator('li[data-id="table-of-contents"]');
+    await tocTab.click();
+    await page.waitForTimeout(2000);
 
-    const slider = page.locator("div.widget-slider");
+    await page.locator('span[title="ipywidgets"]').click();
+    await page.waitForTimeout(2000);
+
+    await page.notebook.runCell(5);
+    await page.waitForTimeout(5000);
+
+    const slider = page.locator("div.widget-slider").first();
     await expect(slider).toBeVisible();
 
-    const button = page.locator('button:has-text("Click Me")');
+    const button = page.locator('button:has-text("Click Me")').first();
     await expect(button).toBeVisible();
 
     expect(await page.screenshot()).toMatchSnapshot("ipywidgets-initial.png");
