@@ -4,7 +4,7 @@ channels:
 dependencies:
   # Base depenndencies
   - python=3.12
-  - jupyterlab=4.3.5
+  - jupyterlab=4.4.1
   - git
   - ruff=0.9.10
   - nb_conda_kernels=2.5.1
